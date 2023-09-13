@@ -1,0 +1,40 @@
+.espa2{
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+.row{
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+body{
+    overflow: hidden;
+}
+
+button:disabled{
+    opacity: .5;
+}
+
+input.ng-invalid.ng-touched{
+    border: solid 2px red !important
+}
+
+input.ng-valid.ng-touched{
+    border: solid .5px gray !important
+}
+
+b{
+    left: -5%;
+    color:crimson;
+}
+
+.red-snackbar{
+    background-color: rgb(153, 50, 50);
+    color:lightgoldenrodyellow;
+}
+
+.green-snackbar{
+    background-color: rgb(130, 234, 144);
+    color:lightgoldenrodyellow;
+}

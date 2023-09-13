@@ -1,0 +1,34 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Identificaci&oacute;n</th>
+			<th scope="col">Nombre(s)</th>
+			<th scope="col">Apellido(s)</th>
+			<th scope="col">correo</th>
+			<th scope="col">Telefono</th>
+			<th scope="col">Estado</th>
+			<th scope="col">Ciudad</th>
+			<th scope="col">Acci&oacute;n</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let person of personas; index as i">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>{{ person.peridentificacion}}</td>
+			<td>{{ person.pernombre1 }} <ng-container *ngIf="!(person.pernombre2 === undefined)">{{person.pernombre2}}</ng-container></td>
+			<td>{{ person.perapellido1 + " " + person.perapellido2}}</td>
+			<td>{{ person.percorreo }}</td>
+			<td>{{ person.pertelefono }}</td>
+			<td>
+				<ng-container *ngIf="(person.perestado === 'A')">Activo</ng-container>
+				<ng-container *ngIf="(person.perestado === 'I')">Inactivo</ng-container>
+			</td>
+			<td>{{ person.ciunombre}}</td>
+			<td>
+				<app-updatebutton [persona]="person" class="up"></app-updatebutton>
+				<app-deletebutton [persona]="person" class="del"></app-deletebutton>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,26 @@
+<p>
+    <button type="button" class="btn btn-outline-dark" (click)="collapse.toggle()" [attr.aria-expanded]="isCollapsed"
+        aria-controls="collapseExample">
+        Buscar
+    </button>
+</p>
+<div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+    <div class="card">
+        <div class="card-body">
+            <form [formGroup]="formBusqueda">
+                <div class="row">
+                    <div class="col">
+                        <input type="text" (keypress)="writeIn('peridentificacion')" appOnlynumber maxlength="15" formControlName="peridentificacion" class="form-control" placeholder="Por identificaci&oacute;n">
+                    </div>
+                    <div class="col">
+                        <input type="text" (keypress)="writeIn('pernombre')" appOnlyletters maxlength="20" formControlName="pernombre" class="form-control" placeholder="Por nombre">
+                    </div>
+                    <div class="col">
+                        <input type="text" (keypress)="writeIn('percorreo')" maxlength="60" formControlName="percorreo" class="form-control" placeholder="Por correo">
+                    </div>
+                </div>
+                <button (click)="search()" class="btn btn-outline-dark espa"><i class="uil uil-search"></i></button>
+            </form>
+        </div>
+    </div>
+</div>

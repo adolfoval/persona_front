@@ -1,0 +1,62 @@
+<div class="card">
+    <div class="card-header">
+        {{title}}
+    </div>
+    <div class="card-body">
+        <form [formGroup]="formInfo" (ngSubmit)="sendInfo()">
+            <div class="row">
+                <div class="col">
+                    <input appOnlynumber id="peridentificacion" [readOnly]="modo === 'update'" name="peridentificacion" maxlength="15" formControlName="peridentificacion"  type="text" class="form-control" placeholder="Identificaci&oacute;n">
+                    <b *ngIf="peridentificacion.errors || peridentificacion.invalid" class="alert">Identificaci&oacute;n es requerido.</b>
+                </div>
+                
+                <div class="col">
+                    <input appOnlyletters formControlName="pernombre1" maxlength="20" type="text" class="form-control" placeholder="Nombre 1">
+                    <b *ngIf="pernombre1.errors ||  pernombre1.invalid" class="alert">Nombre 1 es requerido.</b>
+                </div>
+                <div class="col">
+                    <input appOnlyletters formControlName="pernombre2" maxlength="20" type="text" class="form-control" placeholder="Nombre 2">
+                    <!-- <b *ngIf="nombre2.errors ||  nombre2.invalid" class="alert">Nombre 2 es requerido.</b> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input appOnlyletters formControlName="perapellido1" maxlength="25" type="text" class="form-control" placeholder="Apellido 1">
+                    <b *ngIf="perapellido1.errors || perapellido1.invalid" class="alert">Apellido 1 es requerido.</b>
+                </div>
+                <div class="col">
+                    <input appOnlyletters formControlName="perapellido2" maxlength="25" type="text" class="form-control" placeholder="Apellido 2">
+                    <b *ngIf="perapellido2.errors || perapellido2.invalid" class="alert">Apellido 2 es requerido.</b>
+                </div>
+                <div class="col">
+                    <input formControlName="percorreo" maxlength="60" type="text" class="form-control" placeholder="Correo">
+                    <b *ngIf="percorreo.errors || percorreo.invalid" class="alert">Digite un correo valido.</b>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input appOnlynumber formControlName="pertelefono" maxlength="20" type="text" class="form-control" placeholder="Telefono">
+                    <b *ngIf="pertelefono.errors || pertelefono.invalid" class="alert">Telefono es requerido.</b>
+                </div>
+                <div class="col">
+                    <select formControlName="departamento" class="form-select" aria-label="Default select example">
+                        <option selected readonly value="-1">Departamento</option>
+                        <option *ngFor="let departamentoIn of departamentos" [value]="departamentoIn.depid">{{departamentoIn.depnombre}}</option>
+                    </select>
+                    <b *ngIf="departamento.value === -1 || departamento.value === '-1'" class="alert">Departamento no valido.</b>
+                </div>
+                <div class="col">
+                    <select formControlName="ciuid"  class="form-select" aria-label="Default select example">
+                        <option selected readonly value="-1">Ciudad</option>
+                        <option *ngFor="let ciudadIn of ciudades" [value]="ciudadIn.ciuid">{{ciudadIn.ciunombre}}</option>
+                    </select>
+                    <b *ngIf="ciuid.value === -1 || ciuid.value === '-1'" class="alert">Ciudad no valida.</b>
+                </div>
+            </div>
+            <button type="submit" *ngIf="modo === 'insert'" placement="bottom" ngbTooltip="Guardar" [disabled]="formInfo.invalid" class="btn btn-dark espa2"><i class="uil uil-save"></i></button>
+            <button type="submit" *ngIf="modo === 'update'" placement="bottom" ngbTooltip="Modificar" [disabled]="formInfo.invalid" class="btn btn-dark espa2"><i class="uil uil-redo"></i></button>
+            <button (click)="close()" class="btn btn-outline-danger espa2"><i class="uil uil-times"></i></button>
+        </form>
+        <!-- <div>Raw {{formInfo.value | json}}</div> -->
+    </div>
+</div>

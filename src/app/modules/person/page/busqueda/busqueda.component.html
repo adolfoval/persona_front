@@ -19,8 +19,8 @@
                         <input type="text" (keypress)="writeIn('percorreo')" maxlength="60" formControlName="percorreo" class="form-control" placeholder="Por correo">
                     </div>
                 </div>
-                <button (click)="search()" class="btn btn-outline-dark espa"><i class="uil uil-search"></i></button>
-                <button (click)="reset()" class="btn btn-outline-primary espa dos"><i class="uil uil-list-ul"></i></button>
+                <button (click)="search()" matTooltip="Buscar" class="btn btn-outline-dark espa"><i class="uil uil-search"></i></button>
+                <button (click)="reset()" matTooltip="Reiniciar filtros" class="btn btn-outline-primary espa dos"><i class="uil uil-list-ul"></i></button>
             </form>
         </div>
     </div>

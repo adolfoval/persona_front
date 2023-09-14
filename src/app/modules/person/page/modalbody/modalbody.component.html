@@ -53,9 +53,9 @@
                     <b *ngIf="ciuid.value === -1 || ciuid.value === '-1'" class="alert">Ciudad no valida.</b>
                 </div>
             </div>
-            <button type="submit" *ngIf="modo === 'insert'" placement="bottom" ngbTooltip="Guardar" [disabled]="formInfo.invalid" class="btn btn-dark espa2"><i class="uil uil-save"></i></button>
-            <button type="submit" *ngIf="modo === 'update'" placement="bottom" ngbTooltip="Modificar" [disabled]="formInfo.invalid" class="btn btn-dark espa2"><i class="uil uil-redo"></i></button>
-            <button (click)="close()" class="btn btn-outline-danger espa2"><i class="uil uil-times"></i></button>
+            <button type="submit" *ngIf="modo === 'insert'" matTooltip="Guardar" placement="bottom" ngbTooltip="Guardar" [disabled]="formInfo.invalid" class="btn btn-dark espa2"><i class="uil uil-save"></i></button>
+            <button type="submit" *ngIf="modo === 'update'" matTooltip="Actualizar" placement="bottom" ngbTooltip="Modificar" [disabled]="formInfo.invalid" class="btn btn-dark espa2"><i class="uil uil-redo"></i></button>
+            <button (click)="close()" matTooltip="Cerrar" class="btn btn-outline-danger espa2"><i class="uil uil-times"></i></button>
         </form>
         <!-- <div>Raw {{formInfo.value | json}}</div> -->
     </div>

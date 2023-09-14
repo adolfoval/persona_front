@@ -12,7 +12,7 @@ import { OnlylettersDirective } from './directives/onlyletters.directive';
 import { UpdatebuttonComponent } from './page/updatebutton/updatebutton.component';
 import { DeletebuttonComponent } from './page/deletebutton/deletebutton.component';
 import { ComfirmdialogComponent } from './page/comfirmdialog/comfirmdialog.component';
-
+import { MatTooltipModule, MatTooltip } from "@angular/material/tooltip";
 
 
 @NgModule({
@@ -34,6 +34,7 @@ import { ComfirmdialogComponent } from './page/comfirmdialog/comfirmdialog.compo
     NgbModalModule,
     NgbDatepicker,
     ReactiveFormsModule,
+    MatTooltipModule
     
   ],
   exports:[

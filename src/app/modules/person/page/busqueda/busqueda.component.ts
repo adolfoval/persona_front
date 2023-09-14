@@ -79,5 +79,9 @@ export class BusquedaComponent implements OnInit{
     }
     
   }
+
+  reset(){
+    this.gridService.filter("Register click", "");
+  }
   
 }

@@ -10,13 +10,6 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 import { TablepersonService } from "@person/services/tableperson.service";
 import { UpdatepersonService } from "@person/services/updateperson.service";
 
-
-
-interface Departamento{
-  depid: string;
-  depnombre: string;
-}
-
 @Component({
   selector: 'app-modalbody',
   templateUrl: './modalbody.component.html',

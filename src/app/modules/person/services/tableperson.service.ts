@@ -16,7 +16,7 @@ export class TablepersonService {
 
 
 
-  getPersons$(): Observable<any>{
+  getPersons$(): Observable<personaResponse>{
     console.log("me llamo")
     return this.http.get<personaResponse>(`${this.URL}/persona/all`).pipe(
       // map(response =>{

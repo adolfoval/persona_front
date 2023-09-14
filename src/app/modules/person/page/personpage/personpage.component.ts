@@ -14,9 +14,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
 export class PersonpageComponent implements OnInit{
 
-	personas: personaResponse[] = [{peridentificacion:"1111111", pernombre1:"Sancochio", 
+	personas: personaResponse = {data: [{peridentificacion:"1111111", pernombre1:"Sancochio", 
 	perapellido1:"Malhecho", perapellido2:"De toda la vida", percorreo:"sacochiio@gmail.com",
-	pertelefono:"3215698745",perestado:"I", depid:"-1",  ciuid:"-1", ciunombre:"SANTIAGO DE CHILE"}]
+	pertelefono:"3215698745",perestado:"I", depid:"-1",  ciuid:"-1", ciunombre:"SANTIAGO DE CHILE"}], message:""} 
 	
 
 	constructor(private personService:TablepersonService, private  notification:MatSnackBar){
@@ -37,8 +37,9 @@ export class PersonpageComponent implements OnInit{
 
 	private allPersons(){
 		this.personService.getPersons$().subscribe({
-			next: (response) => {
-				this.personas = response.data;
+			next: (response: personaResponse) => {
+				console.table(response)
+				this.personas = response;
 			},
 			error: (error) =>{
 				this.notification.open("Ocurrio un error consultando las personas", "Ok",{

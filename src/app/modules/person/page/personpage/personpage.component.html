@@ -13,7 +13,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr *ngFor="let person of personas; index as i">
+		<tr *ngFor="let person of personas.data; index as i">
 			<th scope="row">{{ i + 1 }}</th>
 			<td>{{ person.peridentificacion}}</td>
 			<td>{{ person.pernombre1 }} <ng-container *ngIf="!(person.pernombre2 === undefined)">{{person.pernombre2}}</ng-container></td>

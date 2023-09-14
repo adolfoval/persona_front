@@ -41,7 +41,7 @@
                 <div class="col">
                     <select formControlName="departamento" class="form-select" aria-label="Default select example">
                         <option selected readonly value="-1">Departamento</option>
-                        <option *ngFor="let departamentoIn of departamentos" [value]="departamentoIn.depid">{{departamentoIn.depnombre}}</option>
+                        <option *ngFor="let departamentoIn of departamentos.data" [value]="departamentoIn.depid">{{departamentoIn.depnombre}}</option>
                     </select>
                     <b *ngIf="departamento.value === -1 || departamento.value === '-1'" class="alert">Departamento no valido.</b>
                 </div>

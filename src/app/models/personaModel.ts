@@ -21,7 +21,7 @@ export interface PersonaForm{
     ciuid: string;
 }
 
-export interface personaResponse{
+export interface personaRe{
     peridentificacion: string;
     pernombre1: string;
     pernombre2?: string;
@@ -33,4 +33,9 @@ export interface personaResponse{
     depid: string;
     ciuid: string;
     ciunombre: string;
+}
+
+export interface personaResponse{
+    data: Array<personaRe>;
+    message: string;
 }

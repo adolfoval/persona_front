@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-// import { Departamento } from '@models/departamentoModel';
+import { Departamento, DepartamentoResponse } from '@models/departamentoModel';
 import { DepartmentserviceService } from "@person/services/departmentservice.service";
 import { CityService } from "@person/services/city.service";
 import { PersonaModel } from '@models/personaModel';
@@ -9,6 +9,7 @@ import { SavepersonService } from '@modules/person/services/saveperson.service';
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { TablepersonService } from "@person/services/tableperson.service";
 import { UpdatepersonService } from "@person/services/updateperson.service";
+import { Ciudad, CiudadResponse } from "@models/ciudadModel";
 
 @Component({
   selector: 'app-modalbody',
@@ -19,8 +20,8 @@ import { UpdatepersonService } from "@person/services/updateperson.service";
 
 export class ModalbodyComponent implements OnInit{
 
-  departamentos : any;
-  ciudades : any;
+  departamentos : DepartamentoResponse = {data: [], message: ""};
+  ciudades : Ciudad[] = [];
   persona : PersonaModel = {peridentificacion: "", pernombre1:"", pernombre2:"", perapellido1: "", perapellido2:"", percorreo:"", pertelefono:"", ciuid:""}
   title : string ="Este va a ser el titulo"
   public formInfo: FormGroup = new FormGroup({});
@@ -55,7 +56,7 @@ export class ModalbodyComponent implements OnInit{
     this.createForm();
 
     this.depService.getDepartments$().subscribe({
-      next: (response) => {
+      next: (response: DepartamentoResponse) => {
         this.departamentos = response
       },
       error: (error) => {
@@ -71,7 +72,8 @@ export class ModalbodyComponent implements OnInit{
 
     this.departamento.valueChanges.subscribe(depId =>{
       this.ciuService.getCities$(depId).subscribe({
-        next: (response) =>{
+        next: (response: Ciudad[]) =>{
+          console.log(response)
           this.ciudades = response;
           this.ciuid.setValue(-1);
         },

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog} from "@angular/material/dialog";
-import { personaResponse } from '@models/personaModel';
+import { personaResponse, personaRe } from '@models/personaModel';
 import { ModalbodyComponent } from "@person/page/modalbody/modalbody.component"
 
 @Component({
@@ -10,7 +10,7 @@ import { ModalbodyComponent } from "@person/page/modalbody/modalbody.component"
 })
 export class UpdatebuttonComponent {
 
-  @Input() persona: personaResponse = {peridentificacion:"1111111", pernombre1:"Sancochio", 
+  @Input() persona: personaRe = {peridentificacion:"1111111", pernombre1:"Sancochio", 
 	perapellido1:"Malhecho", perapellido2:"De toda la vida", percorreo:"sacochiio@gmail.com",
 	pertelefono:"3215698745", perestado:"A", depid:"1", ciuid:"1", ciunombre:"NINGUNA"}
 

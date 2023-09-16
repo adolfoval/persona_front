@@ -168,7 +168,7 @@ export class ModalbodyComponent implements OnInit{
               horizontalPosition: "center"
             });
             this.dialogRef.close();
-            this.gridService.filter("Register click", "");
+            this.gridService.SetPersonaObs = ["Register click", ""];
           },
           error: (error) => {
             this.notification.open("Ocurrio el siguente error insertando una persona", "Ok",{
@@ -202,7 +202,7 @@ export class ModalbodyComponent implements OnInit{
               horizontalPosition: "center"
             });
             this.dialogRef.close();
-            this.gridService.filter("Register click", "");
+            this.gridService.SetPersonaObs = ["Register click", ""];
           },
           error: (error) => {
             this.notification.open("Ocurrio el siguente error insertando una persona", "Ok",{

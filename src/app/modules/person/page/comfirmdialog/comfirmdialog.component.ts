@@ -36,7 +36,7 @@ export class ComfirmdialogComponent {
           horizontalPosition: "center"
         });
         this.dialogRef.close();
-        this.gridService.filter("Register click", "");
+        this.gridService.SetPersonaObs = ["Register click", ""];
       },
       error: (error) => {
         this.notification.open(error.message, "Ok", {
@@ -46,8 +46,8 @@ export class ComfirmdialogComponent {
           verticalPosition:"top",
           horizontalPosition: "center"
         });
-        this.dialogRef.close();
+        
       },
-    })
+    });
   }
 }

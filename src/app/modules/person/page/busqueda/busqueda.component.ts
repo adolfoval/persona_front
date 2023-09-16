@@ -23,8 +23,8 @@ export class BusquedaComponent implements OnInit{
   ngOnInit(): void {
     this.createFormControls();
     this.createForm();
-    
   }
+  
 
   createForm(){
     this.formBusqueda = new FormGroup({
@@ -58,16 +58,16 @@ export class BusquedaComponent implements OnInit{
     console.log("Buscar...")
     if(this.peridentificacion.value !== ""){
       console.info("Busca por identificacion")
-      this.gridService.filter("By", this.peridentificacion.value);
+      this.gridService.SetPersonaObs = ["filter", this.peridentificacion.value];
 
     }else if(this.pernombre.value !== ""){
       console.info("Busca por nombre");
-      this.gridService.filter("By", this.pernombre.value);
+      this.gridService.SetPersonaObs = ["filter", this.pernombre.value];
 
     }else if(this.percorreo.value !== ""){
 
       console.info("Busca por correo");
-      this.gridService.filter("By", this.percorreo.value);
+      this.gridService.SetPersonaObs = ["filter", this.percorreo.value];
     }else{
       this.notification.open("Los campos de los filtros estan vacios.", "Ok",{
         direction: 'ltr',
@@ -81,7 +81,7 @@ export class BusquedaComponent implements OnInit{
   }
 
   reset(){
-    this.gridService.filter("Register click", "");
+    this.gridService.SetPersonaObs = ["Register click", ""];
   }
   
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { HttpClient } from "@angular/common/http";
 import { Observable, BehaviorSubject, Subject } from "rxjs";
-import { personaResponse } from "@models/personaModel";
+import { personaResponse, personaRe } from "@models/personaModel";
 import { map, tap } from "rxjs/operators";
 
 @Injectable({
@@ -10,42 +10,34 @@ import { map, tap } from "rxjs/operators";
 })
 export class TablepersonService {
   private readonly URL = environment.api;
-  private _refreshNode$ = new Subject<void>();
-  private _listeners = new Subject<any>();
-  constructor(private http: HttpClient) { }
-
-
-
-  getPersons$(): Observable<personaResponse>{
-    console.log("me llamo")
-    return this.http.get<personaResponse>(`${this.URL}/persona/all`).pipe(
-      // map(response =>{
-      //     return response;
-      // }),
-      tap(() =>{
-        this._refreshNode$.next()
-      })
-    );
+  private data: personaResponse = {data: [], message:""};
+  private personaObs$: BehaviorSubject<personaResponse>;
+  
+  constructor(private http: HttpClient) { 
+    this.personaObs$ = new BehaviorSubject(this.data);
   }
 
-  getPersonsBy$(data: string): Observable<any>{
-    console.log("Llamo al by");
-    console.log(`And got ${data}`);
-    return this.http.get<personaResponse>(`${this.URL}/persona/filtro/${data}`).pipe(
-      // map(response =>{
-      //     return response;
-      // }),
-      tap(() =>{
-        this._refreshNode$.next()
-      })
-    );
+  get PersonaObsObject$(){
+    return this.personaObs$.asObservable();
   }
 
-  listen(): Observable<any>{
-    return this._listeners.asObservable();
+  set SetPersonaObs(data: Array<string>){
+    if(data[0] === "Register click"){
+      this.http.get<personaResponse>(`${this.URL}/persona/all`).subscribe(
+        response =>{
+          this.personaObs$.next(response);
+        }
+      );
+    }else{
+      this.http.get<personaResponse>(`${this.URL}/persona/filtro/${data[1]}`).subscribe(
+        respose =>{
+          this.personaObs$.next(respose);
+        }
+      );
+    }
   }
 
-  filter(filterBy: string, data: any){
-    this._listeners.next([filterBy, data])
+  getPersons$():Observable<personaResponse>{
+    return this.http.get<personaResponse>(`${this.URL}/persona/all`);
   }
 }
